@@ -6,6 +6,7 @@ class Foodpanda
 {
 	Restaurant* restaurants;
 	size_t restaurantsCapacity;
+	size_t restaurantsAmount;
 
 public:
 	Foodpanda();
@@ -14,17 +15,22 @@ public:
 	Foodpanda(const Foodpanda& other);
 	Foodpanda& operator=(const Foodpanda& other);
 
-	Foodpanda(Foodpanda&& other);
-	Foodpanda& operator=(Foodpanda&& other);
+	Foodpanda(Foodpanda&& other) noexcept;
+	Foodpanda& operator=(Foodpanda&& other) noexcept;
 
 	~Foodpanda();
 
 	void addRestaurant(const Restaurant& restaurant);
+	void sendOrderToRestaurant(const Order& order) const;
 	void manageOrders();
 
 private:
 	void free();
 	void copyFrom(const Foodpanda& other);
-	void move(Foodpanda&& other);
+	void moveFrom(Foodpanda&& other);
+	void resize(size_t newCapacity);
+
+	size_t findRestaurantIndexByName(const MyString& name) const;
+
 };
 
