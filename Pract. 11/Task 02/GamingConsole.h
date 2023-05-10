@@ -10,10 +10,11 @@ private:
 
 public:
 
-	GamingConsole();
 	GamingConsole(double processorPower, const MyString& videoCardModel, unsigned int powerSupply, unsigned int ram);
 
 	void printTypeOfComputer() const override;
 	const MyString* getPeripherals() const override;
+	virtual void printPeripherals() const override;
+
 };
 

@@ -11,7 +11,6 @@ private:
 
 public:
 	
-	Computer();
 	Computer(double processorPower, const MyString& videoCardModel, unsigned int powerSupply, unsigned int ram);
 	virtual ~Computer();
 
@@ -22,6 +21,6 @@ public:
 
 	virtual void printTypeOfComputer() const = 0;
 	virtual const MyString* getPeripherals() const = 0;
-
+	virtual void printPeripherals() const = 0;
 };
 
