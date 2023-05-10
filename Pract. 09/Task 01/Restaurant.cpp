@@ -74,11 +74,11 @@ Restaurant& Restaurant::operator=(const Restaurant& other) {
 	return *this;
 }
 
-Restaurant::Restaurant(Restaurant&& other) {
+Restaurant::Restaurant(Restaurant&& other) noexcept{
 	moveFrom(std::move(other));
 }
 
-Restaurant& Restaurant::operator=(Restaurant&& other) {
+Restaurant& Restaurant::operator=(Restaurant&& other) noexcept {
 	if (this != &other) {
 		free();
 		moveFrom(std::move(other));

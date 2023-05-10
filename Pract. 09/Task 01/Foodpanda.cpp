@@ -48,11 +48,11 @@ Foodpanda::~Foodpanda() {
 	free();
 }
 
-Foodpanda::Foodpanda(Foodpanda&& other) {
+Foodpanda::Foodpanda(Foodpanda&& other) noexcept {
 	moveFrom(std::move(other));
 }
 
-Foodpanda& Foodpanda::operator=(Foodpanda&& other) {
+Foodpanda& Foodpanda::operator=(Foodpanda&& other) noexcept {
 	if (this != &other) {
 		free();
 		moveFrom(std::move(other));

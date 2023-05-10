@@ -51,11 +51,11 @@ Order::~Order() {
 	free();
 }
 
-Order::Order(Order&& other) {
+Order::Order(Order&& other) noexcept {
 	moveFrom(std::move(other));
 }
 
-Order& Order::operator=(Order&& other) {
+Order& Order::operator=(Order&& other) noexcept {
 	if (this != &other) {
 		free();
 		moveFrom(std::move(other));
