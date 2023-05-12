@@ -6,7 +6,7 @@ GamingConsole::GamingConsole(double processorPower, const MyString& videoCardMod
 	: Computer(processorPower, videoCardModel, powerSupply, ram) {}
 
 void GamingConsole::printTypeOfComputer() const {
-	std::cout << "Laptop" << std::endl;
+	std::cout << "Gaming console" << std::endl;
 }
 
 const MyString* GamingConsole::getPeripherals() const {
