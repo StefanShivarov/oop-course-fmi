@@ -5,12 +5,10 @@ enum Stars { one = 0, two = 256, three = 512, four = 1024, five = 2048 };
 class Player
 {
 
-private:
+protected:
 	int id;
 	unsigned short points;
 	Stars stars;
-
-	bool increaseLevel(Stars nextLevel); // adding this method just to reduce repetition of code in the levelUp() method
 
 public:
 
@@ -20,5 +18,7 @@ public:
 	void completeMission(unsigned short missionPoints);
 	virtual bool levelUp();
 
+private:
+	bool increaseLevel(Stars nextLevel); // adding this method just to reduce repetition of code in the levelUp() method
 };
 
