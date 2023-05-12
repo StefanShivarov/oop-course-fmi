@@ -24,3 +24,19 @@ void User::login(int id, const MyString& password) {
 		std::cout << "Unsuccessful login! Incorrect id/password!" << std::endl;
 	}
 }
+
+void User::checkIfLoggedIn() const {
+	if (!isLoggedIn) {
+		throw std::exception("User not logged in!");
+	}
+}
+
+void User::completeMission(unsigned short missionPoints) {
+	checkIfLoggedIn();
+	Player::completeMission(missionPoints);
+}
+
+bool User::levelUp() {
+	checkIfLoggedIn();
+	Player::levelUp();
+}

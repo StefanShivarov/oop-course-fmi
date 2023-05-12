@@ -15,7 +15,7 @@ public:
 	Player(int id);
 	virtual ~Player();
 
-	void completeMission(unsigned short missionPoints);
+	virtual void completeMission(unsigned short missionPoints);
 	virtual bool levelUp();
 
 private:
