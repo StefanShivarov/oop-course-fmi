@@ -10,6 +10,8 @@ protected:
 	unsigned short points;
 	Stars stars;
 
+	virtual bool increaseLevel(Stars nextLevel); // adding this method just to reduce repetition of code in the levelUp() method
+
 public:
 
 	Player(int id);
@@ -18,7 +20,5 @@ public:
 	virtual void completeMission(unsigned short missionPoints);
 	virtual bool levelUp();
 
-private:
-	bool increaseLevel(Stars nextLevel); // adding this method just to reduce repetition of code in the levelUp() method
 };
 

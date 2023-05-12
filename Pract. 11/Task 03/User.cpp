@@ -38,5 +38,5 @@ void User::completeMission(unsigned short missionPoints) {
 
 bool User::levelUp() {
 	checkIfLoggedIn();
-	Player::levelUp();
+	return Player::levelUp();
 }

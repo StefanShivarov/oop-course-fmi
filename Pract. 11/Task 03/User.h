@@ -11,12 +11,14 @@ private:
 	bool isLoggedIn;
 
 	void setPassword(const MyString& password);
+
+protected:
 	void checkIfLoggedIn() const;
 
 public:
 
 	User(int id, const MyString& password);
-
+	
 	void login(int id, const MyString& password);
 
 	void completeMission(unsigned short missionPoints) override;
