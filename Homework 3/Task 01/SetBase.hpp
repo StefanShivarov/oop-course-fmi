@@ -4,7 +4,7 @@
 template <class T>
 class SetBase {
 
-private:
+protected:
 
 	Vector<T> data;
 	size_t elementsAmount;
@@ -16,7 +16,7 @@ public:
 
 	bool contains(const T& value) const;
 	size_t size() const;
-	void insert(const T& value);
+	virtual void insert(const T& value);
 	void erase(const T& value);
 	virtual void printAllElements() = 0;
 };
