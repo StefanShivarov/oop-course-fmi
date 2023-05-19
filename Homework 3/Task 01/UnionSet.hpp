@@ -9,7 +9,6 @@ public:
 	UnionSet();
 	UnionSet(const Vector<SetBase<T>*>& sets);
 
-	void mergeWith(const SetBase<T>& other);
 	void printAllElements() const override;
 };
 
@@ -21,16 +20,7 @@ UnionSet<T>::UnionSet(const Vector<SetBase<T>*>& sets) {
 
 	const size_t setsAmount = sets.getSize();
 	for (size_t i = 0; i < setsAmount; i++) {
-		mergeWith(*(sets[i]));
-	}
-}
-
-template <class T>
-void UnionSet<T>::mergeWith(const SetBase<T>& other) {
-
-	const size_t otherSetSize = other.size();
-	for (size_t i = 0; i < otherSetSize; i++) {
-		this->insert(other.getAtIndex(i));
+		this->mergeWith(*(sets[i]));
 	}
 }
 

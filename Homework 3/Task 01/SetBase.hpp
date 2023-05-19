@@ -20,6 +20,10 @@ public:
 	virtual void insert(const T& value);
 	void erase(const T& value);
 	virtual void printAllElements() const = 0;
+
+	void mergeWith(const SetBase<T>& other);
+	void intersectWith(const SetBase<T>& other);
+
 };
 
 template <class T>
@@ -67,6 +71,24 @@ void SetBase<T>::erase(const T& value) {
 		if (data[i] == value) {
 			data.popAt(i);
 			elementsAmount--;
+		}
+	}
+}
+
+template <class T>
+void SetBase<T>::mergeWith(const SetBase<T>& other) {
+	//const size_t otherSetSize = other.size();
+	for (size_t i = 0; i < other.elementsAmount; i++) {
+		insert(other.data[i]);
+	}
+}
+
+template <class T>
+void SetBase<T>::intersectWith(const SetBase<T>& other) {
+
+	for (size_t i = 0; i < this->elementsAmount; i++) {
+		if (!other.contains(this->data[i])) {
+			erase(this->data[i]);
 		}
 	}
 }
