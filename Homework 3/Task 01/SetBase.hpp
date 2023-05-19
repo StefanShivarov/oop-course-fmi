@@ -14,6 +14,7 @@ public:
 	SetBase();
 	virtual ~SetBase();
 
+	const T& getAtIndex(size_t index) const;
 	bool contains(const T& value) const;
 	size_t size() const;
 	virtual void insert(const T& value);
@@ -30,6 +31,14 @@ SetBase<T>::~SetBase() {}
 template <class T>
 size_t SetBase<T>::size() const {
 	return elementsAmount;
+}
+
+template <class T>
+const T& SetBase<T>::getAtIndex(size_t index) const {
+	if (index >= elementsAmount) {
+		throw std::length_error("Error! Index out of bounds!");
+	}
+	return this->data[index];
 }
 
 template <class T>
