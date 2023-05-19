@@ -1,5 +1,5 @@
 #pragma once
-
+#include <iostream>
 //This is the custom template Vector class that we made during OOP seminar
 
 // NOTE!: most of the functions are not needed in the class

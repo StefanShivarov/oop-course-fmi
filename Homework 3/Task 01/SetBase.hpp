@@ -18,7 +18,7 @@ public:
 	size_t size() const;
 	virtual void insert(const T& value);
 	void erase(const T& value);
-	virtual void printAllElements() = 0;
+	virtual void printAllElements() const = 0;
 };
 
 template <class T>

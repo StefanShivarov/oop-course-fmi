@@ -1,6 +1,6 @@
 #pragma once
 #include "SetBase.hpp"
-#include <iostream>
+
 
 template <class T>
 class PredicateSet : public SetBase<T> {
@@ -15,7 +15,7 @@ public:
 
 	void insert(const T& value) override;
 	bool accepts(const T& value) const;
-	void printAllElements() override;
+	void printAllElements() const override;
 };
 
 template <class T>
@@ -38,7 +38,7 @@ void PredicateSet<T>::insert(const T& value) {
 }
 
 template <class T>
-void PredicateSet<T>::printAllElements() {
+void PredicateSet<T>::printAllElements() const {
 
 	std::cout << "PredicateSet: ";
 	for (size_t i = 0; i < this->elementsAmount; i++) {
