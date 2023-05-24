@@ -17,6 +17,7 @@ public:
 	const T& getAtIndex(size_t index) const;
 	bool contains(const T& value) const;
 	size_t size() const;
+	bool isEmpty() const;
 	virtual void insert(const T& value);
 	void erase(const T& value);
 	virtual void printAllElements() const = 0;
@@ -35,6 +36,11 @@ SetBase<T>::~SetBase() {}
 template <class T>
 size_t SetBase<T>::size() const {
 	return elementsAmount;
+}
+
+template <class T>
+bool SetBase<T>::isEmpty() const {
+	return size == 0;
 }
 
 template <class T>

@@ -39,6 +39,8 @@ public:
 	T popBack();
 	T popAt(size_t index);
 
+	T* getData() const;
+
 	bool empty() const;
 	void clear();
 	void shrinkToFit();
@@ -112,6 +114,11 @@ void Vector<T>::upsizeIfNeeded() {
 	if (size == capacity) {
 		resize(capacity * RESIZE_COEF);
 	}
+}
+
+template<typename T>
+T* Vector<T>::getData() const {
+	return data;
 }
 
 template<typename T>

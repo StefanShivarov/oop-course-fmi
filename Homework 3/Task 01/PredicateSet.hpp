@@ -7,34 +7,34 @@ class PredicateSet : public SetBase<T> {
 
 private:
 
-	bool (*predicate)(const T&);
+	bool (*predicate)(const Vector<T>&, const T&);
 
 public:
 
-	PredicateSet(bool (*function)(const T&));
+	PredicateSet(bool (*function)(const Vector<T>&numbers, const T& el));
 
-	void insert(const T& value) override;
-	bool accepts(const T& value) const;
+	void insert(const Vector<T>& numbers, const T& value) override;
+	bool accepts(const Vector<T>& numbers, const T& value) const;
 	void printAllElements() const override;
 };
 
 template <class T>
-PredicateSet<T>::PredicateSet(bool (*function)(const T&)) : SetBase<T>(), predicate(function) {}
+PredicateSet<T>::PredicateSet(bool (*function)(const Vector<T>& numbers, const T&)) : SetBase<T>(), predicate(function) {}
 
 template <class T>
-bool PredicateSet<T>::accepts(const T& value) const {
-	return predicate(value);
+bool PredicateSet<T>::accepts(const Vector<T>& numbers, const T& value) const {
+	return predicate(numbers, value);
 }
 
 template <class T>
-void PredicateSet<T>::insert(const T& value) {
+void PredicateSet<T>::insert(const Vector<T>& numbers, const T& value) {
 
-	if (!accepts(value)) {
+	if (!accepts(numbers, value)) {
 
 		throw std::exception("Error! The item you are trying to add doesn't match the criteria for this set.");
 	}
 
-	SetBase<T>::insert(value);
+	SetBase<T>::insert(numbers, value);
 }
 
 template <class T>
