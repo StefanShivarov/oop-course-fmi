@@ -40,7 +40,7 @@ size_t SetBase<T>::size() const {
 
 template <class T>
 bool SetBase<T>::isEmpty() const {
-	return size == 0;
+	return elementsAmount == 0;
 }
 
 template <class T>

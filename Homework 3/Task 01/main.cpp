@@ -10,8 +10,7 @@
 const short MAX_FILENAME_LENGTH = 1024;
 const char FIRST_FILENAME[] = "set.dat";
 
-MyString getStringFromFile(std::ifstream& ifs)
-{
+MyString getStringFromFile(std::ifstream& ifs) {
     MyString str;
     char character;
     while (ifs.get(character) && character != '\0')
@@ -21,8 +20,7 @@ MyString getStringFromFile(std::ifstream& ifs)
     return str;
 }
 
-bool dividesNoneOfNumbers(const Vector<uint32_t>& numbers,const uint32_t& number)
-{
+bool dividesNoneOfNumbers(const uint32_t& number, const Vector<uint32_t>& numbers) {
     const size_t numbersSize = numbers.getSize();
     for (size_t i = 0; i < numbersSize; i++) {
         if (number % numbers[i] == 0) {
@@ -32,8 +30,7 @@ bool dividesNoneOfNumbers(const Vector<uint32_t>& numbers,const uint32_t& number
     return true;
 }
 
-bool dividesExactlyOneOfNumbers(const Vector<uint32_t>& numbers, const uint32_t& number)
-{
+bool dividesExactlyOneOfNumbers( const uint32_t& number, const Vector<uint32_t>& numbers) {
     const size_t numbersSize = numbers.getSize();
     size_t counter = 0;
     for (size_t i = 0; i < numbersSize; i++) {
@@ -52,8 +49,8 @@ SetBase<uint32_t>* createSetFromFile(std::ifstream& ifs) {
     }
 
     uint16_t N, T;
-    ifs.read((char*) N, sizeof(N));
-    ifs.read((char*) T, sizeof(T));
+    ifs.read((char*) (&N), sizeof(N));
+    ifs.read((char*) (&T), sizeof(T));
     
        
     if (T == 0) {
