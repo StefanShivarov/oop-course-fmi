@@ -62,6 +62,5 @@ void printArr(T* arr, size_t arrSize) {
 	for (size_t i = 0; i < arrSize; i++) {
 		std::cout << arr[i] << " ";
 	}
-
 	std::cout << std::endl;
 }
