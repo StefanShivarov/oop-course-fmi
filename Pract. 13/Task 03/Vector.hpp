@@ -120,10 +120,12 @@ void Vector<T>::shiftElementsFromIndex(size_t index) {
 }
 
 template <typename T>
-Vector<T>::Vector(): capacity(INITIAL_VECTOR_CAPACITY) {}
+Vector<T>::Vector(): Vector(INITIAL_VECTOR_CAPACITY) {}
 
 template <typename T>
-Vector<T>::Vector(size_t capacity): capacity(capacity) {}
+Vector<T>::Vector(size_t capacity): capacity(capacity) {
+	data = new T[capacity];
+}
 
 template <typename T>
 Vector<T>::Vector(const Vector<T>& other) {
