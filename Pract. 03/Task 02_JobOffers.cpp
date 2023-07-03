@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#pragma warning (disable: 4996)
 
 const short MAX_LENGTH = 25;
 const char* FILE_PATH = "jobOffers.dat";
@@ -54,6 +55,11 @@ void readJobOfferFromBinaryFile(std::ifstream& ifs, JobOffer& offer) {
 	ifs.read((char*) &offer, sizeof(offer));
 }
 
+void flushStream() {
+	std::cin.clear();
+	std::cin.ignore(255, '\n');
+}
+
 JobOffer readOfferFromConsole() {
 
 	char name[MAX_LENGTH + 1];
@@ -71,11 +77,6 @@ JobOffer readOfferFromConsole() {
 
 	flushStream();
 	return initOffer(name, colleagues, restDays, salary);
-}
-
-void flushStream() {
-	std::cin.clear();
-	std::cin.ignore(255, '\n');
 }
 
 void printOffer(const JobOffer& offer) {
