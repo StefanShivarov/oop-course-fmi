@@ -7,8 +7,8 @@ const short MAX_DESCRIPTION_LENGTH = 200;
 class Task
 {
 
-	char title[MAX_TITLE_LENGTH + 1];
-	char description[MAX_DESCRIPTION_LENGTH + 1];
+	char title[MAX_TITLE_LENGTH + 1] = "\0";
+	char description[MAX_DESCRIPTION_LENGTH + 1] = "\0";
 	int points = 0;
 
 public:
