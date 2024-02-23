@@ -17,21 +17,21 @@ struct Student {
 
 Year getYearFromNumber(int number) {
 	switch (number) {
-	case 1: return Year::First;
-	case 2: return Year::Second;
-	case 3: return Year::Third;
-	case 4: return Year::Fourth;
-	default: return Year::Unknown;
+	    case 1: return Year::First;
+	    case 2: return Year::Second;
+	    case 3: return Year::Third;
+	    case 4: return Year::Fourth;
+	    default: return Year::Unknown;
 	}
 }
 
 const char* getYearString(const Year& year) {
 	switch (year) {
-	case Year::First: return "First";
-	case Year::Second: return "Second";
-	case Year::Third: return "Third";
-	case Year::Fourth: return "Fourth";
-	case Year::Unknown: return "Unknown";
+	    case Year::First: return "First";
+	    case Year::Second: return "Second";
+	    case Year::Third: return "Third";
+	    case Year::Fourth: return "Fourth";
+	    case Year::Unknown: return "Unknown";
 	}
 }
 
