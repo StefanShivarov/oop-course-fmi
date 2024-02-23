@@ -19,9 +19,11 @@ ComplexNumber multiplyComplexNumbers(const ComplexNumber& lhs, const ComplexNumb
 void printComplex(const ComplexNumber& complex) {
 	std::cout << complex.real
 		<< (complex.imaginary < 0 ? "" : " +")
-		<< " " << complex.imaginary << "i";
+		<< " " << complex.imaginary << "i"
+		<< std::endl;
 }
 
+/*
 int main() {
 	ComplexNumber c1{ 0, 4 };
 	ComplexNumber c2{ -6, 1 };
@@ -32,3 +34,5 @@ int main() {
 
 	return 0;
 }
+*/
+
