@@ -24,7 +24,7 @@ struct Library {
 
 Genre initGenre(int num) {
 	switch (num) {
-		case 0: return Genre::Novel;
+	    case 0: return Genre::Novel;
 		case 1: return Genre::Historic;
 		case 2: return Genre::Poetry;
 		default: return Genre::Other;
@@ -33,7 +33,7 @@ Genre initGenre(int num) {
 
 const char* getGenreString(const Genre& genre) {
 	switch (genre) {
-		case Genre::Novel: return "Novel";
+	    case Genre::Novel: return "Novel";
 		case Genre::Historic: return "Historic";
 		case Genre::Poetry: return "Poetry";
 		case Genre::Other: return "Other";
@@ -77,6 +77,8 @@ void printBooksInfo(const Library& library) {
 	}
 }
 
-int main() {
+/*
+* int main() {
 	
 }
+*/
