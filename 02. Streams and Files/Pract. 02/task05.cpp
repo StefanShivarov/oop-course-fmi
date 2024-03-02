@@ -46,6 +46,39 @@ Relation deserializeRelation(std::istream& is) {
     return relation;
 }
 
-int main() {
+void writeRelationToFile(const char* fileName, const Relation& relation) {
+    std::ofstream ofs(fileName);
+    if (!ofs.is_open()) {
+        std::cerr << "There was an error with opening the file.";
+        return;
+    }
 
+    serializeRelation(ofs, relation);
+    ofs.close();
+}
+
+void readRelationFromFile(const char* fileName, Relation& relation) {
+    std::ifstream ifs(fileName);
+    if (!ifs.is_open()) {
+        std::cerr << "There was an error with opening the file.";
+        return;
+    }
+    
+    relation = deserializeRelation(ifs);
+    ifs.close();
+}
+
+int main() {
+    Relation rel;
+    addPairToRelation(rel, { 10, 20 });
+    addPairToRelation(rel, { -1, 4 });
+    addPairToRelation(rel, { -2, 5 });
+    addPairToRelation(rel, { 11, 17 });
+
+    writeRelationToFile("relations.txt", rel);
+
+    Relation deserialized;
+    readRelationFromFile("relations.txt", deserialized);
+
+    serializeRelation(std::cout, deserialized);
 }
