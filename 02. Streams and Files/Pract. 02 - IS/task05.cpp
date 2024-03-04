@@ -18,11 +18,11 @@ enum class Major {
 
 const char* getMajorString(Major major) {
     switch (major) {
-    case Major::IS: return "IS";
-    case Major::SI: return "SI";
-    case Major::KN: return "KN";
-    case Major::IN: return "IN";
-    default: return "Undefined";
+        case Major::IS: return "IS";
+        case Major::SI: return "SI";
+        case Major::KN: return "KN";
+        case Major::IN: return "IN";
+        default: return "Undefined";
     }
 }
 
