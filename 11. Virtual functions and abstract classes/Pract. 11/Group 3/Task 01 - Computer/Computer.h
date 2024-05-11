@@ -11,7 +11,7 @@ public:
     Computer& operator=(const Computer& other);
     Computer& operator=(Computer&& other) noexcept;
 
-    ~Computer();
+    virtual ~Computer();
 
     void setProcessorPower(double processorPower);
     void setVideoCardModel(const char* model);
