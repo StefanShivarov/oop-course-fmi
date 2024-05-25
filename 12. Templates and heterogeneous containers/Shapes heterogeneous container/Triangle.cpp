@@ -1,0 +1,57 @@
+#include "Triangle.h"
+
+Triangle::Triangle(int x1, int y1, int x2, int y2, int x3, int y3) : Shape(3)
+{
+    setPoint(0, x1, y1);
+    setPoint(1, x2, y2);
+    setPoint(2, x3, y3);
+}
+
+double Triangle::getArea() const
+{
+    double sideA = getPointAtIndex(0).getDistanceTo(getPointAtIndex(1));
+    double sideB = getPointAtIndex(0).getDistanceTo(getPointAtIndex(2));
+    double sideC = getPointAtIndex(1).getDistanceTo(getPointAtIndex(2));
+
+    double halfPer = getPerimeter() / 2;
+
+    return sqrt(halfPer * (halfPer - sideA) * (halfPer - sideB) * (halfPer - sideC));
+}
+
+bool Triangle::isPointInside(int x, int y) const
+{
+    Shape::Point p(x, y);
+    Triangle t1(getPointAtIndex(0).x, getPointAtIndex(0).y, getPointAtIndex(1).x, getPointAtIndex(1).y, p.x, p.y);
+    Triangle t2(getPointAtIndex(2).x, getPointAtIndex(2).y, getPointAtIndex(1).x, getPointAtIndex(1).y, p.x, p.y);
+    Triangle t3(getPointAtIndex(2).x, getPointAtIndex(2).y, getPointAtIndex(0).x, getPointAtIndex(0).y, p.x, p.y);
+
+    return abs(t1.getArea() + t2.getArea() + t3.getArea() - getArea()) <= std::numeric_limits<double>::epsilon();
+}
+
+Shape* Triangle::clone() const
+{
+    return new Triangle(*this);
+}
+
+bool Triangle::intersectsWith(Shape* shape)
+{
+    return shape->intersectsWithTriangle(this);
+}
+
+bool Triangle::intersectsWithRectangle(Rectangle* rectangle)
+{
+    // formula for triangle and rectangle
+    return true;
+}
+
+bool Triangle::intersectsWithTriangle(Triangle* triangle)
+{
+    // formula for triangle and triangle
+    return true;
+}
+
+bool Triangle::intersectsWithCircle(Circle* circle)
+{
+    // formula for triangle and circle
+    return true;
+}
