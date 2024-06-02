@@ -7,7 +7,7 @@ PartialFunctionMax::PartialFunctionMax(uint16_t capacity) : PartialFunctionExtre
 int32_t PartialFunctionMax::operator()(int32_t x) const
 {
     if (!isDefinedFor(x)) {
-        throw std::out_of_range("Function is not defined for x = " + x);
+        throw std::invalid_argument("Function is not defined for x!");
     }
 
     int32_t maxValue = MIN_INT32_VALUE;
@@ -16,7 +16,7 @@ int32_t PartialFunctionMax::operator()(int32_t x) const
         try {
             result = functions[i]->operator()(x);
         }
-        catch (const std::out_of_range& e) {
+        catch (const std::invalid_argument& e) {
             continue;
         }
         maxValue = std::max(maxValue, result);
