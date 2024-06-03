@@ -22,25 +22,6 @@ int main()
 
     ofs.close();*/
 
-    /*std::ifstream ifs("func.dat", std::ios::binary);
-    if (!ifs.is_open()) {
-        throw std::runtime_error("Could not open file!");
-    }
-
-    uint16_t N, T;
-    ifs.read((char*)&N, sizeof(uint16_t));
-    ifs.read((char*)&T, sizeof(uint16_t));
-
-    std::cout << N << ' ' << T << std::endl;
-
-    for (uint16_t i = 0; i < N; i++) {
-        char buff[1024];
-        ifs.getline(buff, 1024, '\0');
-        std::cout << buff << std::endl;
-    }
-
-    ifs.close();*/
-
     /*std::ofstream first("first.dat", std::ios::binary);
     if (!first.is_open()) {
         throw 7;
@@ -91,22 +72,30 @@ int main()
 
     third.close();*/
 
-    PartialFunction* func = PartialFunctionDeserializer::deserializePartialFunctionFromBinaryFile("func.dat");
-    
-    int32_t a, b;
-    std::cout << "Enter a: ";
-    std::cin >> a;
-    std::cout << "Enter b: ";
-    std::cin >> b;
+    try {
+        PartialFunction* func = PartialFunctionDeserializer::deserializePartialFunctionFromBinaryFile("func.dat");
+        
+        int32_t a, b;
+        std::cout << "Enter a: ";
+        std::cin >> a;
+        std::cout << "Enter b: ";
+        std::cin >> b;
 
-    for (int32_t i = a; i <= b; i++) {
-        if (func->isDefinedFor(i)) {
-            std::cout << "f(" << i << ") = " << (*func)(i) << std::endl;
+        for (int32_t i = a; i <= b; i++) {
+            if (func->isDefinedFor(i)) {
+                std::cout << "f(" << i << ") = " << (*func)(i) << std::endl;
+            }
+            else {
+                std::cout << "f(" << i << ") is undefined!" << std::endl;
+            }
         }
-        else {
-            std::cout << "f(" << i << ") is undefined!" << std::endl;
-        }
+
+        delete func;
     }
-
-    delete func;
+    catch (const std::exception& e) {
+        std::cout << e.what();
+    }
+    catch (...) {
+        std::cout << "Error occured!";
+    }
 }

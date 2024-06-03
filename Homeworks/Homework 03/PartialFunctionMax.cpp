@@ -20,7 +20,6 @@ int32_t PartialFunctionMax::operator()(int32_t x) const
             continue;
         }
         maxValue = std::max(maxValue, result);
-
     }
     return maxValue;
 }
