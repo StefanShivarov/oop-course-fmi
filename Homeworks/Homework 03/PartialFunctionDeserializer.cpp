@@ -25,28 +25,28 @@ PartialFunction* PartialFunctionDeserializer::deserializePartialFunctionFromBina
 
     try {
         switch (T) {
-        case 0: {
-            resultFunction = deserializePartialFunctionByCriterionZero(ifs, N);
-            break;
-        }
-        case 1: {
-            resultFunction = deserializePartialFunctionByCriterionOne(ifs, N);
-            break;
-        }
-        case 2: {
-            resultFunction = deserializePartialFunctionByCriterionTwo(ifs, N);
-            break;
-        }
-        case 3: {
-            resultFunction = deserializePartialFunctionMax(ifs, N);
-            break;
-        }
-        case 4: {
-            resultFunction = deserializePartialFunctionMin(ifs, N);
-            break;
-        }
-        default:
-            throw std::invalid_argument("Invalid value for T!");
+            case 0: {
+                resultFunction = deserializePartialFunctionByCriterionZero(ifs, N);
+                break;
+            }
+            case 1: {
+                resultFunction = deserializePartialFunctionByCriterionOne(ifs, N);
+                break;
+            }
+            case 2: {
+                resultFunction = deserializePartialFunctionByCriterionTwo(ifs, N);
+                break;
+            }
+            case 3: {
+                resultFunction = deserializePartialFunctionMax(ifs, N);
+                break;
+            }
+            case 4: {
+                resultFunction = deserializePartialFunctionMin(ifs, N);
+                break;
+            }
+            default:
+                throw std::invalid_argument("Invalid value for T!");
         }
     }
     catch (...) {
