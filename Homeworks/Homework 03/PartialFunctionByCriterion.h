@@ -6,7 +6,7 @@ template <class T>
 class PartialFunctionByCriterion : public PartialFunction
 {
 public:
-    PartialFunctionByCriterion(const T& criterion);
+    explicit PartialFunctionByCriterion(const T& criterion);
 
     bool isDefinedFor(int32_t x) const override;
     int32_t operator()(int32_t x) const override;

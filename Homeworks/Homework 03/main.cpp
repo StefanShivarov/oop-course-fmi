@@ -1,4 +1,5 @@
 #include "PartialFunctionDeserializer.h"
+#include "Command.h"
 #pragma warning(disable: 4996)
 
 int main()
@@ -72,24 +73,18 @@ int main()
 
     third.close();*/
 
+    PartialFunction* func = nullptr;
     try {
-        PartialFunction* func = PartialFunctionDeserializer::deserializePartialFunctionFromBinaryFile("func.dat");
-        
-        int32_t a, b;
-        std::cout << "Enter a: ";
-        std::cin >> a;
-        std::cout << "Enter b: ";
-        std::cin >> b;
-
-        for (int32_t i = a; i <= b; i++) {
-            if (func->isDefinedFor(i)) {
-                std::cout << "f(" << i << ") = " << (*func)(i) << std::endl;
-            }
-            else {
-                std::cout << "f(" << i << ") is undefined!" << std::endl;
-            }
+        func = PartialFunctionDeserializer::deserializePartialFunctionFromBinaryFile("func.dat");
+        try {
+            Command* command = CommandFactory::generateCommand();
+            command->execute(func);
+            delete command;
         }
-
+        catch (const std::invalid_argument& e) {
+            delete func;
+            throw;
+        }
         delete func;
     }
     catch (const std::exception& e) {

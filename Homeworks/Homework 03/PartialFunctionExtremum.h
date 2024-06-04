@@ -4,7 +4,8 @@
 class PartialFunctionExtremum : public PartialFunction
 {
 public:
-    PartialFunctionExtremum(uint16_t capacity);
+    explicit PartialFunctionExtremum(uint16_t capacity);
+    PartialFunctionExtremum(PartialFunction** functions, uint16_t count);
 
     PartialFunctionExtremum(const PartialFunctionExtremum& other);
     PartialFunctionExtremum(PartialFunctionExtremum&& other) noexcept;

@@ -109,18 +109,39 @@ PartialFunction* PartialFunctionDeserializer::deserializePartialFunctionByCriter
 
 PartialFunction* PartialFunctionDeserializer::deserializePartialFunctionMax(std::ifstream& ifs, uint16_t N)
 {
-    PartialFunctionMax* maxFunc = new PartialFunctionMax(N);
+    //PartialFunctionMax* maxFunc = new PartialFunctionMax(N);
+    //try {
+    //    for (uint16_t i = 0; i < N; i++) {
+    //        char fileNameBuff[1024];
+    //        ifs.getline(fileNameBuff, 1024, '\0');
+    //        PartialFunction* func = deserializePartialFunctionFromBinaryFile(fileNameBuff);
+    //        maxFunc->addFunction(func); // maxFunc takes ownership of func
+    //    }
+    //    return maxFunc;
+    //}
+    //catch (...) {
+    //    delete maxFunc;
+    //    throw;
+    //}
+    PartialFunction** functions = new PartialFunction * [N];
     try {
+        char fileNameBuff[1024];
         for (uint16_t i = 0; i < N; i++) {
-            char fileNameBuff[1024];
             ifs.getline(fileNameBuff, 1024, '\0');
-            PartialFunction* func = deserializePartialFunctionFromBinaryFile(fileNameBuff);
-            maxFunc->addFunction(func);
+            functions[i] = deserializePartialFunctionFromBinaryFile(fileNameBuff);
         }
+        PartialFunctionMax* maxFunc = new PartialFunctionMax(functions, N);
+        for (uint16_t i = 0; i < N; i++) {
+            delete functions[i];
+        }
+        delete[] functions;
         return maxFunc;
     }
     catch (...) {
-        delete maxFunc;
+        for (uint16_t i = 0; i < N; i++) {
+            delete functions[i];
+        }
+        delete[] functions;
         throw;
     }
 }
@@ -133,7 +154,7 @@ PartialFunction* PartialFunctionDeserializer::deserializePartialFunctionMin(std:
             char fileNameBuff[1024];
             ifs.getline(fileNameBuff, 1024, '\0');
             PartialFunction* func = deserializePartialFunctionFromBinaryFile(fileNameBuff);
-            minFunc->addFunction(func);
+            minFunc->addFunction(func); // minFunc takes owneship of func
         }
         return minFunc;
     }

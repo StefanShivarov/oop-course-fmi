@@ -5,6 +5,23 @@ PartialFunctionExtremum::PartialFunctionExtremum(uint16_t capacity) : PartialFun
     functions = new PartialFunction*[capacity];
 }
 
+PartialFunctionExtremum::PartialFunctionExtremum(PartialFunction** functions, uint16_t count) : PartialFunctionExtremum(count)
+{
+    try {
+        for (uint16_t i = 0; i < count; i++) {
+            if (functions[i] == nullptr) {
+                throw std::invalid_argument("Function is nullptr!");
+            }
+            this->functions[i] = functions[i]->clone();
+        }
+        functionsCount = count;
+    }
+    catch (const std::invalid_argument& e) {
+        free();
+        throw;
+    }   
+}
+
 PartialFunctionExtremum::PartialFunctionExtremum(const PartialFunctionExtremum& other) : PartialFunction(other)
 {
     copyFrom(other);

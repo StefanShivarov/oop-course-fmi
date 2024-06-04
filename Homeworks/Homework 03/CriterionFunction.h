@@ -6,7 +6,7 @@ class CriterionFunction
 public:
     CriterionFunction(const int32_t* args, uint16_t count);
 
-    virtual Pair<bool, int32_t> operator()(int32_t x) const = 0;
+    virtual Pair<bool,int32_t> operator()(int32_t x) const = 0;
     virtual CriterionFunction* clone() const = 0;
     virtual ~CriterionFunction() = default;
 protected:
@@ -16,8 +16,6 @@ protected:
 
     int findArgumentIndex(int32_t x) const;
 };
-
-// can also be done as CriterionFunction<T>, where T is either 0, 1 or 2
 
 class CriterionFunctionZero : public CriterionFunction
 {

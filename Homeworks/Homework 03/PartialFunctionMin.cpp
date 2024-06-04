@@ -1,16 +1,18 @@
 #include "PartialFunctionMin.h"
 
-const int32_t MAX_INT32_VALUE = 2147483647;
-
 PartialFunctionMin::PartialFunctionMin(uint16_t capacity) : PartialFunctionExtremum(capacity) {}
+
+PartialFunctionMin::PartialFunctionMin(PartialFunction** functions, uint16_t count) 
+    : PartialFunctionExtremum(functions, count) {}
 
 int32_t PartialFunctionMin::operator()(int32_t x) const
 {
     if (!isDefinedFor(x)) {
         throw std::invalid_argument("Function is not defined for x!");
     }
-    int32_t minValue = MAX_INT32_VALUE;
-    for (uint16_t i = 0; i < functionsCount; i++) {
+
+    int32_t minValue = functions[0]->operator()(x);
+    for (uint16_t i = 1; i < functionsCount; i++) {
         int32_t result;
         try {
             result = functions[i]->operator()(x);

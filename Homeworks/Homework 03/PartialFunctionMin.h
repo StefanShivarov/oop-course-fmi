@@ -4,7 +4,8 @@
 class PartialFunctionMin : public PartialFunctionExtremum
 {
 public:
-    PartialFunctionMin(uint16_t capacity);
+    explicit PartialFunctionMin(uint16_t capacity);
+    PartialFunctionMin(PartialFunction** functions, uint16_t count);
     int32_t operator()(int32_t x) const override;
     PartialFunction* clone() const override;
 };
