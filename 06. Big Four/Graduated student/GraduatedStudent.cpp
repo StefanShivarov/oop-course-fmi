@@ -2,10 +2,10 @@
 #include <cstring>
 #pragma warning(disable: 4996)
 
-GraduatedStudent::GraduatedStudent(const char* name, const int* grades, size_t gradesCount, const char* quote) : gradesCount(gradesCount)
+GraduatedStudent::GraduatedStudent(const char* name, const int* grades, size_t gradesCount, const char* quote)
 {
     setName(name);
-    setGrades(grades);
+    setGrades(grades, gradesCount);
     setQuote(quote);
 }
 
