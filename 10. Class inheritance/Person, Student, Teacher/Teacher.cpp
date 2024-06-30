@@ -32,7 +32,7 @@ Teacher::Teacher(const Teacher& other) : Person(other)
     copyFrom(other);
 }
 
-Teacher::Teacher(Teacher&& other) : Person(std::move(other))
+Teacher::Teacher(Teacher&& other) noexcept : Person(std::move(other))
 {
     moveFrom(std::move(other));
 }
@@ -47,7 +47,7 @@ Teacher& Teacher::operator=(const Teacher& other)
     return *this;
 }
 
-Teacher& Teacher::operator=(Teacher&& other) 
+Teacher& Teacher::operator=(Teacher&& other) noexcept
 {
     if (this != &other) {
         Person::operator=(std::move(other));
